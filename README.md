@@ -20,7 +20,7 @@ Painel web (login + dados compartilhados em tempo real) que desenvolvi para a **
 | Front-end | HTML, CSS e JavaScript puros (single-page, sem build) |
 | Back-end / banco | Supabase (PostgreSQL + Auth + Realtime) |
 | Segurança | Row Level Security em todas as tabelas + função `am_i_member()` (`security definer`) que libera acesso só a e-mails autorizados |
-| Hospedagem | Netlify (deploy estático) |
+| Hospedagem | Cloudflare Pages (deploy estático) |
 
 ## Modelo de dados
 
@@ -34,11 +34,11 @@ Painel web (login + dados compartilhados em tempo real) que desenvolvi para a **
 
 ## Como rodar
 
-O passo a passo completo (Supabase + Netlify) está em [`LEIA-ME.md`](LEIA-ME.md). Resumo:
+O passo a passo completo (Supabase + Cloudflare Pages) está em [`LEIA-ME.md`](LEIA-ME.md). Resumo:
 
 1. Crie um projeto no Supabase e rode `supabase.sql` no SQL Editor (troque os e-mails de exemplo).
 2. Em `index.html`, substitua `COLE_AQUI_A_URL_DO_PROJETO` e `COLE_AQUI_A_CHAVE_ANON` (e, se usar a integração com Google, `COLE_AQUI_O_CLIENT_ID_DO_GOOGLE`).
-3. Publique a pasta no Netlify e configure a URL do site em *Authentication > URL Configuration*.
+3. Publique a pasta no Cloudflare Pages e configure a URL do site em *Authentication > URL Configuration*.
 
 ## Próximos passos
 

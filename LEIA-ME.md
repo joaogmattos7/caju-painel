@@ -1,6 +1,6 @@
-# Painel Caju: como colocar no ar (Supabase + Netlify)
+# Painel Caju: como colocar no ar (Supabase + Cloudflare Pages)
 
-O que você vai precisar: contas no Supabase e no Netlify. Separe cerca de 30 a 40 minutos para a primeira configuração.
+O que você vai precisar: contas no Supabase e na Cloudflare. Separe cerca de 30 a 40 minutos para a primeira configuração.
 Os nomes dos menus nos dois sites podem mudar um pouco com o tempo, mas a ideia é a mesma.
 
 ## 1. Criar o banco no Supabase
@@ -51,14 +51,14 @@ Os nomes dos menus nos dois sites podem mudar um pouco com o tempo, mas a ideia 
 
 A chave pública pode ficar no site. Quem protege os dados são as regras do passo 2: sem estar na lista de e-mails autorizados, ninguém enxerga nada.
 
-## 4. Publicar no Netlify
-1. Entre em netlify.com e crie a conta.
-2. Em **Add new site > Deploy manually**, arraste a pasta que contém o `index.html`.
-3. O Netlify gera um endereço (algo como `https://nome-aleatorio.netlify.app`). Você pode trocar o nome em **Site configuration > Change site name**.
+## 4. Publicar no Cloudflare Pages
+1. Entre em dash.cloudflare.com e crie a conta.
+2. Vá em **Workers & Pages > Create > Pages > Upload assets**, dê um nome ao projeto e arraste a pasta que contém o `index.html`. (Outra opção: **Connect to Git** e escolher este repositório, para publicar a cada commit.)
+3. A Cloudflare gera um endereço no formato `https://nome-do-projeto.pages.dev`. Um domínio próprio pode ser ligado em **Custom domains**.
 
 ## 5. Avisar o Supabase qual é o endereço do site
 1. No Supabase, vá em **Authentication > URL Configuration**.
-2. Em **Site URL**, cole o endereço do Netlify.
+2. Em **Site URL**, cole o endereço do Cloudflare Pages.
 3. Em **Redirect URLs**, adicione o mesmo endereço.
 Sem isso, os links dos e-mails de confirmação e de recuperar senha não voltam para o painel.
 
@@ -81,5 +81,5 @@ Deixe a confirmação de e-mail do Supabase **ligada** (é o padrão). Ela garan
 - Os cadastros antigos de clientes, entregas e financeiro permanecem no banco. A tela de Clientes e o Financeiro estão disponíveis no menu do painel.
 - Para liberar mais alguém: no SQL Editor, rode `insert into public.allowed_emails values ('novo@exemplo.com');`
 - Para tirar o acesso: `delete from public.allowed_emails where email = 'saiu@exemplo.com';`
-- Para atualizar o visual do painel depois: edite o `index.html` e arraste a pasta de novo no Netlify (**Deploys > Drag and drop**).
+- Para atualizar o visual do painel depois: edite o `index.html` e envie a pasta de novo no projeto do Cloudflare Pages (**Create deployment**), ou faça um commit no GitHub se o projeto estiver conectado ao repositório.
 - O envio de e-mails do Supabase no plano de testes tem limite por hora. Para duas pessoas costuma bastar, mas confira os limites atuais no site deles.
