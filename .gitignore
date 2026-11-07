@@ -1,0 +1,19 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+
+# Segredos e configuracao local (nunca subir)
+.env
+.env.*
+config.local.js
+*.key
+
+# Exportacoes de dados reais
+*.csv
+*.xlsx
+backup/
